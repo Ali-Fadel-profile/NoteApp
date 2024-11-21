@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="img/notepad.png" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <title>Almadrasa-Notes</title>
+  </head>
+  <body>
+    <header>
+      <button class="header__menu">
+        <span class="header__menu-item"></span
+        ><span class="header__menu-item"></span
+        ><span class="header__menu-item"></span>
+      </button>
+      <div class="header__logo">
+        <img src="img/Logo.svg" alt="logo icon" class="header__logo-img" />
+      </div>
+      <button class="header__search"></button>
+      <form class="headerForm">
+        <label class="headerForm__searchInput-icon">
+          <img src="img/searchIcon.svg" alt="search icon" />
+        </label>
+        <input
+          type="text"
+          class="headerForm__searchInput text"
+          placeholder="Search"
+        />
+      </form>
+      <nav class="headerNav">
+        <div class="headerNav__container">
+          <button class="headerNav__closeMenu"></button>
+          <div class="headerNav__addNote">
+            <a class="headerNav__showNote-btn text active__link"> Notes </a>
+            <a class="headerNav__addNote-btn text">Add Note</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="notesArchieve"></section>
+      <section class="note"></section>
+      <section class="noteForm">
+        <h2 class="title">Add Note</h2>
+        <form class="noteForm__form">
+          <label for="title" class="noteForm__label text">Title*</label>
+          <input type="text" id="title" class="noteForm__input text" required />
+
+          <label for="author" class="noteForm__label text">Author*</label>
+          <input
+            type="text"
+            id="author"
+            class="noteForm__input text"
+            required
+          />
+
+          <label for="note" class="noteForm__label text">Your Note*</label>
+          <textarea
+            id="note"
+            class="noteForm__textarea text"
+            required
+          ></textarea>
+
+          <div class="noteForm__actions">
+            <button
+              type="submit"
+              class="noteForm__button text"
+              id="addRegularNote"
+            >
+              Add Note
+            </button>
+            <button
+              type="submit"
+              class="noteForm__button text"
+              id="addPinnedNote"
+            >
+              Add Pinned Note
+            </button>
+          </div>
+        </form>
+      </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="script/dom.js"></script>
+    <script src="script/main.js" type="module"></script>
+    <script src="script/notes.js" type="module"></script>
+  </body>
+</html>

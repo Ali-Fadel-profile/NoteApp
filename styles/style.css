@@ -1,0 +1,551 @@
+:root {
+  --note-padding-left: 1.6rem;
+  --color-primary: #ec7160;
+  --color-secondry: #303030;
+  --color-gray-light: #f6f6f6;
+  --color-gray-medium: #898989;
+  --color-white: white;
+  --color-text: var(--color-secondry);
+  --color-headers: var(--color-secondry);
+  --swal-popup-bg: var(--color-gray-light);
+  --swal-icon-color: var(--color-primary);
+  --font-family-Rubik: "Inter", sans-serif;
+  --font-weight-regular: 400;
+  --transition-timing: 0.5s;
+}
+/* Start global rules */
+* {
+  padding: 0;
+  margin: 0;
+  font: inherit;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  display: inline-block;
+  text-decoration: none;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  border: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 11rem;
+}
+
+body {
+  font-family: "Rubik", sans-serif;
+  border: 0;
+}
+.title {
+  color: var(--color-secondry);
+  font-size: 2.6rem;
+  font-weight: var(--font-weight-regular);
+  line-height: 3rem;
+}
+.text {
+  color: var(--color-secondry);
+  font-size: 1.6rem;
+  font-weight: var(--font-weight-regular);
+  line-height: 2.7rem;
+}
+
+/* custom styles for the sweetAlert */
+.custom-popup {
+  background-color: var(--color-white) !important;
+  border-radius: 10px !important;
+  padding: 20px !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.custom-title {
+  color: var(--color-secondry) !important;
+  font-size: 2.2rem !important;
+  font-weight: var(--font-weight-regular) !important;
+  margin-bottom: 10px !important;
+}
+
+.custom-text {
+  color: var(--color-gray-medium) !important;
+  font-size: 1.5rem !important;
+  line-height: 2.8rem !important;
+}
+
+.custom-confirm-button {
+  background-color: var(--color-primary) !important;
+  color: white !important;
+  border-radius: 6px !important;
+  padding: 10px 16px !important;
+  font-size: 1.4rem !important;
+  transition: background-color var(--transition-timing), transform 0.2s;
+}
+
+.custom-confirm-button:hover {
+  background-color: #d85b50 !important;
+  transform: translateY(-2px) !important;
+}
+
+.custom-confirm-button:active {
+  background-color: #c44a3a !important;
+  transform: translateY(0) !important;
+}
+.custom-confirm-button {
+  background-color: var(--color-primary) !important;
+  color: var(--color-white) !important;
+  border-radius: 6px !important;
+  padding: 10px 16px !important;
+  transition: background-color var(--transition-timing);
+}
+
+.custom-confirm-button:hover {
+  background-color: #d85b50 !important;
+}
+
+.custom-cancel-button {
+  background-color: var(--color-gray-medium) !important;
+  color: var(--color-white) !important;
+  border-radius: 6px !important;
+  padding: 10px 16px !important;
+  transition: background-color var(--transition-timing);
+}
+
+.custom-cancel-button:hover {
+  background-color: #707070 !important;
+}
+
+.custom-icon {
+  color: var(--swal-icon-color) !important;
+}
+
+/* header styles  */
+header {
+  width: 100%;
+  padding: 1.6rem;
+  display: flex;
+  justify-content: space-between;
+  transition: calc(var(--transition-timing) - 0.15ms) background-color ease;
+  position: fixed;
+  top: 0;
+  background-color: var(--color-white);
+}
+.header__menu {
+  display: flex;
+  gap: 0.6rem;
+  flex-direction: column;
+}
+.header__menu-item {
+  width: 2rem;
+  height: 0.2rem;
+  background-color: var(--color-secondry);
+}
+.header__menu-item:last-child {
+  width: 1.5rem;
+}
+.header__logo-img {
+  width: 14rem;
+  height: 1.7rem;
+}
+.header__search,
+.headerNav__closeMenu {
+  background-image: url(../img/searchIcon.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 2rem;
+  height: 2rem;
+  transition: calc(var(--transition-timing)) background-image ease;
+}
+.closeHeaderSearch {
+  background-image: url(../img/deleteIcon.svg);
+}
+.headerNav {
+  position: fixed;
+  left: 0%;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #e0e0e01f;
+  transform: translateX(-100%);
+  transition: var(--transition-timing) transform ease;
+  z-index: 1000;
+}
+.showNav {
+  transform: translateX(0%);
+}
+.headerNav__container {
+  padding: 2rem 1.6rem;
+  width: 60%;
+  height: 100%;
+  background-color: var(--color-gray-light);
+}
+.headerNav__closeMenu {
+  background-image: url(../img/deleteIcon.svg);
+  margin-bottom: 4rem;
+}
+
+.headerNav__addNote-btn,
+.headerNav__showNote-btn {
+  width: 100%;
+  text-align: start;
+  padding-left: 1rem;
+  margin-bottom: 0.5rem;
+  border-left: var(--color-primary) solid 0rem;
+  color: var(--color-gray-medium);
+  cursor: pointer;
+  transition: color var(--transition-timing) ease;
+}
+.active__link {
+  border-left-width: 0.2rem;
+  color: var(--color-secondry);
+}
+.headerForm {
+  position: fixed;
+  left: 0%;
+  top: 0rem;
+  width: 100%;
+  background-color: var(--color-gray-light);
+  border-bottom: #e7e7e9 solid 0.1rem;
+  padding: 1.6rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-7rem);
+  transition: var(--transition-timing) transform ease;
+}
+.showForm {
+  transform: translateY(5.2rem);
+}
+.showFormBackground {
+  background-color: var(--color-gray-light);
+}
+
+.headerForm__searchInput-icon {
+  position: absolute;
+  left: 2.4rem;
+  z-index: 1;
+  width: 1.7rem;
+  height: auto;
+}
+.headerForm__searchInput-icon img {
+  width: 1rem;
+  width: 100%;
+}
+.headerForm__searchInput {
+  position: relative;
+  padding: 1rem;
+  padding-left: 3.5rem;
+  border: none;
+  border-radius: 0.7rem;
+  height: 3.5rem;
+  width: 100%;
+}
+
+/* notes section */
+.notesArchieve,
+.note,
+.noteForm {
+  margin-top: 8rem;
+}
+
+.note,
+.noteForm {
+  padding: 0rem var(--note-padding-left) var(--note-padding-left);
+}
+.emptyNote {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.emptyNote__img {
+  max-width: 10rem;
+  height: auto;
+}
+.emptyNote__add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.emptyNote__button {
+  background-color: var(--color-white);
+  border: var(--color-primary) solid 0.15rem;
+  color: var(--color-primary);
+  width: auto;
+  padding: 1.6rem 4.8rem;
+  border-radius: 0.7rem;
+  text-align: center;
+  margin-top: 2rem;
+  transition: background-color var(--transition-timing) ease,
+    color var(--transition-timing) ease;
+}
+.emptyNote__button:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+.notes__label,
+.notes__button {
+  color: var(--color-primary);
+  padding: 0 var(--note-padding-left);
+}
+.notes__item {
+  margin: 1.2rem 0;
+  padding: 0 var(--note-padding-left);
+}
+.notes__title {
+  margin-bottom: 0.5rem;
+  max-height: 3rem;
+  overflow: hidden;
+  cursor: pointer;
+}
+.notes__content,
+.notes__date {
+  color: var(--color-gray-medium);
+}
+.notes__content {
+  max-height: 6rem;
+  overflow: hidden;
+  cursor: pointer;
+}
+.notes__control {
+  margin-top: 1.6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#reagularNotes__label {
+  margin-bottom: 0.5rem;
+  border-top: solid var(--color-gray-light) 0.2rem;
+  border-bottom: solid var(--color-gray-light) 0.2rem;
+}
+
+/* showNote section */
+.note {
+  display: none;
+}
+.note__meta {
+  margin: 1.3rem 0 3.2rem 0;
+  color: var(--color-gray-medium);
+}
+.note__editBtn {
+  width: 5rem;
+  height: auto;
+  position: fixed;
+  bottom: 3rem;
+  right: 1.6rem;
+  z-index: 1;
+}
+.note__editBtn-img {
+  width: 100%;
+  height: auto;
+}
+.editNote__module {
+  position: fixed;
+  top: -100%;
+  left: 0;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: slideDown var(--transition-timing) ease-in-out forwards;
+  opacity: 0;
+  padding: 1rem;
+}
+
+.editNote__form {
+  background-color: var(--color-white);
+  flex: 1;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: fadeIn var(--transition-timing) ease-in-out forwards;
+}
+
+.module__title {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* addNote section */
+.noteForm {
+  display: none;
+}
+.noteForm__form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3.6rem;
+}
+.noteForm__label {
+  color: var(--color-gray-medium);
+}
+.noteForm__input,
+.noteForm__textarea {
+  background-color: var(--color-gray-light);
+  color: var(--color-secondry);
+  border: none;
+  border-radius: 0.7rem;
+  padding: 1.5rem;
+  margin: 1rem 0rem 3.5rem 0rem;
+}
+.noteForm__textarea {
+  min-height: 15rem;
+}
+.noteForm__actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0rem 0 4rem 0rem;
+}
+.noteForm__button {
+  background-color: var(--color-primary);
+  width: auto;
+  padding: 1.5rem 3rem;
+  border-radius: 0.5rem;
+  color: white;
+  font-size: 1.4rem;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  body {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+  header {
+    position: relative;
+    display: block;
+    background-color: var(--color-gray-light);
+    min-height: 100vh;
+    margin-bottom: 0;
+    padding: 4rem 2.4rem;
+  }
+  .header__menu,
+  .header__search,
+  .headerNav__closeMenu {
+    display: none;
+  }
+  .headerNav {
+    position: relative;
+    transform: translateX(0);
+    height: auto;
+  }
+  .headerNav__container {
+    width: 100%;
+    padding: 0;
+  }
+  .headerForm {
+    position: relative;
+    transform: translateY(0);
+    border-bottom: none;
+    padding: 0;
+    margin-top: 6rem;
+    margin-bottom: 4rem;
+  }
+  .headerForm__searchInput-icon {
+    left: 1rem;
+  }
+  .notesArchieve,
+  .note,
+  .noteForm {
+    margin-top: 0rem;
+    padding-top: 4rem;
+  }
+  .editNote__form {
+    max-width: 70%;
+  }
+}
+@media (min-width: 1000px) {
+  body {
+    grid-template-columns: 1fr 4fr;
+  }
+  main {
+    display: grid;
+    grid-template-columns: 1fr 2.25fr;
+  }
+  .notesArchieve {
+    grid-column: 1;
+    border-right: var(--color-gray-light) solid 0.2rem;
+  }
+  .notesArchieve__empty {
+    border-right: var(--color-gray-light) solid 0.2rem;
+    grid-column: 1/3;
+    text-align: center;
+  }
+  .note {
+    grid-column: 2.25;
+  }
+  .noteForm {
+    grid-column: 1 / 3;
+    width: 60rem;
+    margin: 5rem auto 0rem auto;
+  }
+  .editNote__form {
+    max-width: 50%;
+  }
+}
+/* Fade-in effect */
+.fade-in {
+  animation: fadeIn var(--transition-timing) ease-in-out;
+}
+
+.pop-in {
+  animation: popOut var(--transition-timing) ease-in-out;
+}
+
+@keyframes slideDown {
+  from {
+    top: -100%;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    top: 0;
+    opacity: 1;
+  }
+  to {
+    top: -100%;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
