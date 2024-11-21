@@ -122,7 +122,7 @@ export function generateRenderedNoteHTML(note) {
     <p class="note__meta text">${note.date} / By ${note.author}</p>
     <p class="note__content text">${note.note}</p>
     <button class="note__editBtn">
-      <img src="../img/editIcon.png" alt="edit icon" class="note__editBtn-img" />
+      <img src="img/editIcon.png" alt="edit icon" class="note__editBtn-img" />
     </button>
   `;
 }
